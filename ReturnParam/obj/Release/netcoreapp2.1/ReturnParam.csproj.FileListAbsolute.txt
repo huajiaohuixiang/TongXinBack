@@ -1,0 +1,15 @@
+Y:\NETWORK\TongXinBack\ReturnParam\bin\Release\netcoreapp2.1\ReturnParam.deps.json
+Y:\NETWORK\TongXinBack\ReturnParam\bin\Release\netcoreapp2.1\ReturnParam.runtimeconfig.json
+Y:\NETWORK\TongXinBack\ReturnParam\bin\Release\netcoreapp2.1\ReturnParam.runtimeconfig.dev.json
+Y:\NETWORK\TongXinBack\ReturnParam\bin\Release\netcoreapp2.1\ReturnParam.dll
+Y:\NETWORK\TongXinBack\ReturnParam\bin\Release\netcoreapp2.1\ReturnParam.pdb
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.csprojAssemblyReference.cache
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.AssemblyInfoInputs.cache
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.AssemblyInfo.cs
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.csproj.CoreCompileInputs.cache
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.RazorAssemblyInfo.cache
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.RazorAssemblyInfo.cs
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.RazorTargetAssemblyInfo.cache
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.dll
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.pdb
+Y:\NETWORK\TongXinBack\ReturnParam\obj\Release\netcoreapp2.1\ReturnParam.genruntimeconfig.cache
