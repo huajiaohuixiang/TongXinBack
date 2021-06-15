@@ -14,7 +14,7 @@ namespace TongXinBack.DTO
         public string username { get; set; }
         public string nickname { get; set; }
         public string password { get; set; }
-        public string stu_id { get; set; }
+        public string stuid { get; set; }
 
        
     }

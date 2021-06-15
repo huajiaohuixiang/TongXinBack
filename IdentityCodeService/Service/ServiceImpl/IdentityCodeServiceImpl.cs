@@ -28,7 +28,9 @@ namespace IdentityCode
         public void sendIdCode(string username, string mailaddress)
         {
             string code = generatorCode();
+            Console.WriteLine("将要发送邮件！");
             _sendMailService.sendIdentityCode(username, mailaddress,code);
+            Console.WriteLine("发送结束");
             TimeSpan ts = new TimeSpan(0, 5, 0);
             _redis.StringSet("RegisterCode:"+username, code, expiry: ts);
 		}

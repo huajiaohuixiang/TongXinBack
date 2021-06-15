@@ -16,8 +16,11 @@ namespace TongXinBack.Service
         Result login(UserLoginParam userLoginParam);
 
 
-        User getByUsername(string username);
+        Result getByUsername(string username);
 
-        List<User> getAllUser();
+        Result getAllUser();
+
+        Result updataAvatar(string username,  string avatar);
+        Result getAvatar(string username);
     }
 }

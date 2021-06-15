@@ -1,0 +1,6 @@
+Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp3.1\TongXinBack.csprojAssemblyReference.cache
+Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp3.1\TongXinBack.AssemblyInfoInputs.cache
+Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp3.1\TongXinBack.AssemblyInfo.cs
+Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp3.1\TongXinBack.csproj.CoreCompileInputs.cache
+Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp3.1\TongXinBack.MvcApplicationPartsAssemblyInfo.cs
+Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp3.1\TongXinBack.MvcApplicationPartsAssemblyInfo.cache

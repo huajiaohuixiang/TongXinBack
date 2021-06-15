@@ -11,12 +11,15 @@ namespace TongXinBack.Service
     class FollowedServiceImpl : FollowedService
     {
         private readonly IMongoCollection<followed> _followeds;
-        
+        private readonly IMongoCollection<User> _users;
+
         public FollowedServiceImpl(UserAdminDatabaseSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var  database = client.GetDatabase(settings.DatabaseName);
             _followeds = database.GetCollection<followed>("followeds");
+            _users = database.GetCollection<User>("Users");
+
         }
 
         public void add(string userid, FollowUserInfo u)
@@ -24,7 +27,8 @@ namespace TongXinBack.Service
             var filter = new BsonDocument("userid", userid);
             var update = new BsonDocument("$push", new BsonDocument("followeds", u.ToBsonDocument()));//new BsonValue(post)
             _followeds.UpdateOne(filter, update);
-            
+            _users.UpdateOne<User>(user => user.username == userid, new BsonDocument("$inc", new BsonDocument("followed", 1)));
+
         }
 
         public void remove(string userid, string uid2)
@@ -32,6 +36,8 @@ namespace TongXinBack.Service
             var filter = new BsonDocument("userid", userid);
             var update = new BsonDocument("$pull", new BsonDocument("followeds", new BsonDocument("userid", uid2)));//删除
             _followeds.UpdateOne(filter, update);
+            _users.UpdateOne<User>(user => user.username == userid, new BsonDocument("$inc", new BsonDocument("followed", -1)));
+
         }
 
         public void CreateNullList(string username)

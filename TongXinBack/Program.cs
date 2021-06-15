@@ -23,3 +23,6 @@ namespace TongXinBack
                 .UseUrls("http://*:5000;");
     }
 }
+
+
+//dotnet TongXinBack.dll

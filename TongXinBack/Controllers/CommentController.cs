@@ -6,12 +6,13 @@ using TongXinBack.Service;
 using TongXinBack.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using ReturnParam;
 
 namespace TongXinBack.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+  //  [Authorize]
     public class CommentController : ControllerBase
     {
         private readonly CommentService _commentService;
@@ -22,29 +23,29 @@ namespace TongXinBack.Controllers
         }
 
 
-        [Route("/Comment/Create")]
+        [Route("Create")]
         [HttpPost]
-        public ActionResult<Object> Create(string postId,Comment comment)
+        public async Task<ActionResult<Object>> Create([FromForm] string postId, [FromForm] string username, [FromForm] string commentInfo)
         {
-            _commentService.CreateComment(postId, comment);
-
-            return StatusCode(200, "评论成功");
+           Task<Result> result=  _commentService.CreateCommentAsync(postId, username,commentInfo);
+           await  result;
+            return StatusCode(200, result.Result);
         }
 
 
-        [Route("/Comment/getPostComment")]
+        [Route("getPostComment")]
         [HttpGet]
-        public ActionResult<Object> getPostComment(string postId)
+        public ActionResult<Object> getPostComment(string postId,int pageNum,int pageSize)
         {
-           var result=_commentService.Get(postId);
+           var result=_commentService.Get(postId,pageNum,pageSize);
             return StatusCode(200, result);
         }
 
-        [Route("/Comment/getUserComment")]
-        [HttpGet]
-        public ActionResult<Object> getUserComment(string username)
+        [Route("getUserComment")]
+        [HttpPost]
+        public ActionResult<Object> getUserComment([FromForm]string username, [FromForm] int pageNum, [FromForm] int pageSize)
         {
-            var result = _commentService.GetUserComment(username);
+            var result = _commentService.GetUserComment(username,  pageNum,  pageSize);
             return StatusCode(200, result);
         }
     }

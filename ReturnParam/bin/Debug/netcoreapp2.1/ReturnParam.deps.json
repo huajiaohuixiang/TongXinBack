@@ -19,7 +19,7 @@
     "allowUnsafe": false,
     "warningsAsErrors": false,
     "optimize": false,
-    "keyFile": "",
+    "keyFile": "returnparamkey.pfx",
     "emitEntryPoint": true,
     "xmlDoc": false,
     "debugType": "portable"

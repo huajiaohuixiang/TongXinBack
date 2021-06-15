@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReturnParam;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,15 +12,17 @@ namespace TongXinBack.Service
          * 调用FollowingService和FollowedService
          * 实现关注取关操作
          * */
-         
-
-        void follow(FollowUserInfo u1, FollowUserInfo u2);
 
 
-        void unfollow(string userid1, string userid2);
+        Result follow(FollowUserInfo u1, FollowUserInfo u2);
+        Result follow(string uid1, string uid2, string unickname1, string unickname2);
+
+        Result unfollow(string userid1, string userid2);
         void CreateNullList(string username);
 
-        following GetFollowing(string username);
-        followed GetFollowed(string username);
-    }
+        Result GetFollowing(string username);
+        Result GetFollowed(string username);
+
+        Result isFollow(string username, string username2);
+     }
 }

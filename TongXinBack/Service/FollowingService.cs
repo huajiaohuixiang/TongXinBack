@@ -20,5 +20,7 @@ namespace TongXinBack.Service
 
         //获取一个用户的所有关注
         following Get(string username);
+
+        bool isFollow(string username, string username2);
     }
 }

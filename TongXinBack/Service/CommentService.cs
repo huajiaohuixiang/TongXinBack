@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ReturnParam;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,18 +8,16 @@ namespace TongXinBack.Service
 {
     public interface CommentService
     {
-        void CreateComment(string postId, Comment comment);
-
-
+        Task< Result> CreateCommentAsync(string postId, string username, string commentInfo);
         void DeleteComment(string postId, Comment comment);
         void CreateNullList(string postId);
 
         void CreateUserCommentNullList(string username);
 
-        PostComments Get(string postId);
+        Result Get(string postId, int pageNum, int pageSize);
 
 
-        List<Comment> GetUserComment(string username);
+        Result GetUserComment(string username, int pageNum, int pageSize);
 
     }
 }

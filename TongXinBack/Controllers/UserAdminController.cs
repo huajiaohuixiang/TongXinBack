@@ -24,10 +24,11 @@ namespace TongXinBack.Controllers
             _identityCodeService = identityCodeService;
         }
 
-        [Route("/Register")]
+        [Route("Register")]
         [HttpPost]
-        public ActionResult<Object> Register(UserRegisterParam userParam)
-        {                    
+        public ActionResult<Object> Register([FromForm] UserRegisterParam userParam)
+        {
+            Console.WriteLine("111");
                 return StatusCode(200, _userService.register(userParam));        
         }
 
@@ -35,6 +36,7 @@ namespace TongXinBack.Controllers
         [HttpPost]
         public ActionResult<Object> GetCode([FromForm] GetCodeParam getCodeParam)
         {
+            Console.WriteLine("222");
             try
             {
                 _identityCodeService.sendIdCode(getCodeParam.username, getCodeParam.stuid + "@tongji.edu.cn");
@@ -68,16 +70,8 @@ namespace TongXinBack.Controllers
         [Authorize]
         public ActionResult<Object> getUser(string username)
         {
-            User result = _userService.getByUsername(username);
-            if (result==null)
-            {
-                return StatusCode(400,"未找到该用户");
-            }
-            else
-            {
-                return  StatusCode(200, result);
-            }
-
+            return StatusCode(200, _userService.getByUsername(username));
+            
         }
 
 
@@ -86,16 +80,25 @@ namespace TongXinBack.Controllers
         [Authorize]
         public ActionResult<Object> getAllUser()
         {
-            List<User> result = _userService.getAllUser();
-            if (result == null)
-            {
-                return StatusCode(400, "BadRequest！！！");
-            }
-            else
-            {
-                return StatusCode(200, result);
-            }
+           return  StatusCode(200, _userService.getAllUser());
+        }
 
+        [Route("UpdateUserAvatar")]
+        [HttpPost]
+        public ActionResult<Object> UpdateUserAvatar([FromForm] string username, [FromForm] string avatar)
+        {
+            var result = _userService.updataAvatar(username,avatar);
+
+            return StatusCode(200, result);
+        }
+
+        [Route("getUserAvatar")]
+        [HttpPost]
+        public ActionResult<Object> getUserAvatar([FromForm] string username)
+        {
+            var result = _userService.getAvatar(username);
+
+            return StatusCode(200, result);
         }
     }
 }

@@ -15,7 +15,7 @@
       "NETCOREAPP2_1_OR_GREATER"
     ],
     "languageVersion": "7.3",
-    "platform": "",
+    "platform": "x64",
     "allowUnsafe": false,
     "warningsAsErrors": false,
     "optimize": false,
@@ -39,7 +39,9 @@
           "Swashbuckle.AspNetCore": "6.1.4",
           "Swashbuckle.AspNetCore.SwaggerUI": "6.1.4",
           "System.Runtime.CompilerServices.Unsafe": "5.0.0",
+          "System.Security.Permissions": "5.0.0",
           "System.Text.Encodings.Web": "4.6.0",
+          "System.Threading.Channels": "5.0.0",
           "IdentityCode": "1.0.0.0",
           "RedisTemplet": "1.0.0.0",
           "ReturnParam": "1.0.0.0"

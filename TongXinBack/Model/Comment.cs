@@ -12,8 +12,8 @@ namespace TongXinBack.Model
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public  string _id { get; set; }
-
-
+        public string nickname { get; set; }
+        public string avatar { get; set; }
         public string username { get; set; }
         public DateTime comTime { get; set; }
         public string comment { get; set; }

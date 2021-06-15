@@ -15,6 +15,7 @@ using System.IdentityModel.Tokens.Jwt;
 using IdentityCode;
 using System.Net.Mail;
 using StackExchange.Redis;
+using MongoDB.Bson;
 
 namespace TongXinBack.Service
 {
@@ -25,7 +26,7 @@ namespace TongXinBack.Service
         private readonly FollowService _followService;
         private readonly CommentService _commentService;
         private readonly IdentityCodeService _identityCodeService;
-      
+        private readonly LikeService _likeService;
         //public UserServiceImpl()
         //{
         //    var client = new MongoClient("mongodb://81.68.78.139:17017");
@@ -34,10 +35,11 @@ namespace TongXinBack.Service
         //    _users = database.GetCollection<User>("Users");
 
         //}
-        public UserServiceImpl(UserAdminDatabaseSettings settings,PostService postService, FollowService followService, CommentService commentService,IdentityCodeServiceImpl identityCodeService)
+        public UserServiceImpl(UserAdminDatabaseSettings settings,PostService postService, FollowService followService, CommentService commentService,IdentityCodeServiceImpl identityCodeService,LikeService likeService)
         {
             _postService = postService;
             _followService = followService;
+            _likeService = likeService;
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
             _commentService = commentService;
@@ -98,28 +100,35 @@ namespace TongXinBack.Service
                     user.regtime = DateTime.Now;
                     user.nickname = newUser.nickname;
                     user.password = newUser.password;
-                    user.stu_id = newUser.stu_id;
+                    user.stu_id = newUser.stuid;
                     user.username = newUser.username;
                     user.followed = 0;
                     user.following = 0;
+                    //ToDo 设置默认头像
+                    user.avatar = "/avatar/default.png";
                     _users.InsertOne(user);
                     //创建用户空帖子仓库
-                    _postService.CreateNullList(newUser.username);
+                     _postService.CreateNullList(newUser.username);
                     //创建跟随者followed仓库
                     _postService.CreateUserFollowedNullList(newUser.username);
                     //创建评论库
                     _commentService.CreateUserCommentNullList(newUser.username);
-                    //TODO 创建 like库
+                    
                     _followService.CreateNullList(newUser.username);
+
+                    //TODO 创建 like库
+                    _likeService.createNewForUser(newUser.username);
+                    
+                    
                     return Result.success();
                 }
                 else
                 {
-                    return Result.error("该用户已被注册");
+                    return Result.error("00106","该用户已被注册");
                 }
             }
 
-            return Result.error("验证码错误！");
+            return Result.error("00105","验证码错误！");
 
 
         }
@@ -127,12 +136,45 @@ namespace TongXinBack.Service
         public User Get(string username) =>
             _users.Find<User>(user => user.username == username).FirstOrDefault();
 
-        public User getByUsername(string username)
+        public Result getByUsername(string username)
         {
 
-            return Get(username);
+            return Result.success( Get(username));
+        }
+        public  Result getAllUser()
+        {
+            return Result.success(myAllUser());
         }
 
-        public List<User> getAllUser() => _users.Find<User>(user=>true).ToList();
+        private List<User> myAllUser() => _users.Find<User>(user=>true).ToList();
+
+        public Result updataAvatar(string username, string avatar)
+        {
+            Console.WriteLine(username + "," + avatar);
+            try
+            {
+               _users.UpdateOne<User>(user => user.username == username, new BsonDocument("$set", new BsonDocument("avatar", avatar)));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return Result.error("更新头像失败");
+            }
+            Console.WriteLine("更新成功");
+            return Result.success("更新成功");
+        }
+
+        public Result getAvatar(string username)
+        {
+            try
+            {
+                User user = _users.Find<User>(u => u.username == username).FirstOrDefault();
+                String avatar = user.avatar;
+                return Result.success(avatar);
+            }catch(Exception e)
+            {
+                return Result.error("获取失败");
+            }
+        }
     }
 }

@@ -19,9 +19,8 @@ namespace TongXinBack.Model
         public string password { get; set; }
         public int following { get; set; }
         public int followed { get; set; }
-
         public string stu_id { get; set; }
-
         public DateTime regtime { get; set; }
+        public String avatar { get; set; }
     }
 }

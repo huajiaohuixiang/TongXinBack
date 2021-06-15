@@ -52,7 +52,7 @@ namespace TongXinBack
                     {
                         ValidateIssuer = true,//是否验证Issuer
                         ValidateAudience = true,//是否验证Audience
-                        ValidateLifetime = true,//是否验证失效时间
+                        ValidateLifetime = false,//是否验证失效时间
                         ClockSkew = TimeSpan.FromSeconds(30),
                         ValidateIssuerSigningKey = true,//是否验证SecurityKey
                         ValidAudience = JWTSettings.Domain,//Audience
@@ -65,7 +65,7 @@ namespace TongXinBack
             services.AddSingleton<UserAdminDatabaseSettings>(sp =>
                 sp.GetRequiredService<IOptions<UserAdminDatabaseSettingsImpl>>().Value);
 
-            services.AddSingleton<BookService>();
+
             services.AddSingleton<FollowedServiceImpl>();
             services.AddSingleton<FollowingServiceImpl>();
             services.AddSingleton<PostServiceImpl>();
@@ -73,6 +73,7 @@ namespace TongXinBack
             services.AddSingleton<CommentServiceImpl>();
             services.AddSingleton<SendMailServiceImpl>();
             services.AddSingleton<IdentityCodeServiceImpl>();
+            services.AddSingleton<LikeServiceImpl>();
 
             services.AddScoped<UserService, UserServiceImpl>();
             services.AddScoped<FollowedService, FollowedServiceImpl>();
@@ -84,6 +85,8 @@ namespace TongXinBack
             services.AddScoped<IdentityCodeService, IdentityCodeServiceImpl>();
             services.AddTransient<SendMailService, SendMailServiceImpl>();
             services.AddTransient<IdentityCodeService, IdentityCodeServiceImpl>();
+            services.AddTransient<LikeService, LikeServiceImpl>();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Demo", Version = "v1" });

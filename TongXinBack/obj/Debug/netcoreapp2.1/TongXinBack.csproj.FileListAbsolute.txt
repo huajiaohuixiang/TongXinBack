@@ -12,7 +12,6 @@ Y:\NETWORK\TongXinBack\TongXinBack\bin\Debug\netcoreapp2.1\IdentityCode.dll
 Y:\NETWORK\TongXinBack\TongXinBack\bin\Debug\netcoreapp2.1\ReturnParam.dll
 Y:\NETWORK\TongXinBack\TongXinBack\bin\Debug\netcoreapp2.1\IdentityCode.pdb
 Y:\NETWORK\TongXinBack\TongXinBack\bin\Debug\netcoreapp2.1\ReturnParam.pdb
-Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp2.1\TongXinBack.csprojAssemblyReference.cache
 Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp2.1\TongXinBack.AssemblyInfoInputs.cache
 Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp2.1\TongXinBack.AssemblyInfo.cs
 Y:\NETWORK\TongXinBack\TongXinBack\obj\Debug\netcoreapp2.1\TongXinBack.csproj.CoreCompileInputs.cache
